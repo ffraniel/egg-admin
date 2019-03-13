@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 
-const Login = (props) => {
+const Login = ({login}) => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(username, password);
+    console.log("login")
+  }
 
   return (
     <section className="Login">
       <h1>Login</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Username</label>
-        <input type="text" value={props.username} onChange={props.handleInput}/>
+        <input
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          placeholder="Username"
+          type="text"
+          name="username"
+          required
+        />
         <label>Password</label>
-        <input type="text" value={props.password} onChange={props.handleInput}/>
-        <input type="submit" name="Sign In "/>
+        <input 
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="Password"
+          type="text"
+          name="password"
+        />
+        <input type="submit" name="Sign In" value="Sign In"/>
       </form>
     </section>
   )
