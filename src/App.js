@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   login (username, password) {
-    console.log("we called login on app")
+    console.log("we called login on app");
     const user = {
       username: username,
       password: password,
