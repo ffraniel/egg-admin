@@ -30,7 +30,7 @@ const Login = ({login}) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
           placeholder="Password"
-          type="text"
+          type="password"
           name="password"
         />
         <input type="submit" name="Sign In" value="Sign In"/>
