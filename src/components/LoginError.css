@@ -1,0 +1,26 @@
+.login-error {
+  border: solid red 2.5px;
+  border-radius: 2.5px;
+  margin: 20px;
+  color: red;
+  position: relative
+}
+
+.login-error h4 {
+  text-align: center;
+}
+
+.login-error h3 {
+  position: absolute;
+  right: 30px;
+  top: 0px;
+}
+
+.login-error h3:hover {
+  color: rgb(241, 136, 136);
+}
+
+.login-error:hover {
+  border-color:rgb(241, 136, 136);
+  color: rgb(241, 136, 136);
+}

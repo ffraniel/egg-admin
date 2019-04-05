@@ -3,16 +3,23 @@ import './App.css';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Loading from './components/Loading';
+import LoginError from './components/LoginError';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state={
       user: {},
-      loading: false
+      loading: false,
+      loginError: null
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.closeError = this.closeError.bind(this);
+  }
+
+  componentDidMount() {
+    this.login('jenni', 'eggs');
   }
 
   login (username, password) {
@@ -24,7 +31,8 @@ class App extends Component {
     };
     this.setState({
       user,
-      loading: true
+      loading: true,
+      loginError: null
     })
     return fetch(`https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/login/${username}/${password}`)
       .then(res => res.json())
@@ -41,10 +49,11 @@ class App extends Component {
         else if (res.success === false) {
           this.setState({
             loading: false,
-            user: {}
+            user: {},
+            loginError: true
           });
           console.log("failed")
-          //add alert to say login failed
+          console.log(res)
         }
       })
       .catch(error => {
@@ -62,7 +71,13 @@ class App extends Component {
         loggedIn: false
       }
     });
-  }
+  };
+
+  closeError () {
+    this.setState({
+      loginError: null
+    });
+  };
 
   render() {
     return (
@@ -79,6 +94,9 @@ class App extends Component {
           <Login 
             login={this.login} 
           />}
+        {this.state.loginError && 
+          <LoginError closeError={this.closeError}/>
+        }
       </div>
     );
   }
