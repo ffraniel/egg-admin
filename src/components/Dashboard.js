@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
-import OrdersList from './OrdersList';
 import Header from './Header';
+import EggDisplay from './EggDisplay';
+import OrdersSection from './OrdersSection';
 
 const Dashboard = ({username, logout})=>{
 
@@ -124,63 +125,25 @@ const Dashboard = ({username, logout})=>{
       <Header username={username} logoutHandler={logoutHandler} />
       <main className="Dashboard-Content">
         {eggQuantity && 
-        <section className="Dashboard-Display">
-          <h3>Eggs: {eggQuantity}</h3>
-          <div className="Button-Container">
-            <button onClick={addEgg}>+</button>
-            <button onClick={removeEgg}>-</button>
-          </div>
-        </section>}
+          <EggDisplay 
+            eggQuantity={eggQuantity} 
+            addEgg={addEgg} 
+            removeEgg={removeEgg} 
+          />
+        }
         {orders &&
-        <section className="Orders">
-          <h3>Orders upcoming</h3>
-          {orders.map((order)=>{
-            return (
-              <div className="Order-Item" key={order.id}>
-                <h4>{order.name}</h4>
-                <p>Received {order.date}</p>
-                <p>{order.totalCost}</p>
-                <p>Quantity: {order.quantity}</p>
-                <p>Completed: {order.complete ? 'true' : 'false' }</p>
-                <p>Completed Date: {order.complete ? <span>{order.completedDate}</span> : <span>n/a</span>}</p>
-                
-                <OrdersList orderList={order.order} />
-
-                <button onClick={(e)=>{
-                  e.preventDefault();
-                  handleRemoveItem(order.id);
-                  }}>Remove</button>
-
-                <button onClick={()=>{
-                  handleMarkCompletedItem(order.id);
-                  }}>Completed</button>
-
-                <button onClick={()=>{
-                  handleAmendItem(order);
-                  }}>Amend</button>
-
-                {amending && 
-                  <div className="Amend-Item">
-                    <form onSubmit={(e)=>{
-                      e.preventDefault();
-                      handleSubmitAmend(order);
-                    }}>
-                      <label>
-                        Amend order:
-                        <input type="text-area" value={amendedValue} onChange={handleAmendValueChange} />
-                      </label>
-                      <input type="submit" value="Submit" />
-                    </form>
-                  </div>
-                }
-
-              </div>
-            )
-          })}
-
-        </section>}
+          <OrdersSection 
+            orders={orders}
+            handleRemoveItem={handleRemoveItem}
+            handleMarkCompletedItem={handleMarkCompletedItem}
+            handleAmendItem={handleAmendItem}
+            amending={amending}
+            handleSubmitAmend={handleSubmitAmend}
+            amendedValue={amendedValue}
+            handleAmendValueChange={handleAmendValueChange}
+          />
+        }
       </main>
-
     </section>
   );
 };

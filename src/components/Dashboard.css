@@ -1,22 +1,9 @@
 .Dashboard-Content {
   margin: 10px auto;
+  padding-top: 80px;
   width: 50%;
   border: solid black 1.5px;
   text-align: center;
   border-radius: 5px;
   padding: 10px 0;
-}
-
-.Dashboard-Display {
-  border-top: solid 0.5px black;
-  margin: 10px 0;
-}
-
-.Orders {
-  border-top: solid 0.5px black;
-  margin: 10px 0;
-}
-
-.Order-Item {
-  border: solid 0.2px navy;
 }
