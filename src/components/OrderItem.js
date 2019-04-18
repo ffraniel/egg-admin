@@ -40,7 +40,7 @@ const OrderItem = ({
           <span className="notes-text">{order.notes}</span>
         }
       </p>
-      <p>{order.paid}</p>
+      <p>Paid: {order.paid}</p>
       <OrdersList orderList={order.order} />
 
       <button onClick={(e)=>{

@@ -70,17 +70,28 @@ const Dashboard = ({username, logout})=>{
   const handleRemoveItem = (itemID) => {
     console.log("remove", itemID);
     const currentOrders = orders;
-    // fire api call
-    const filteredOrdersList = currentOrders.filter((item) => {
-      return item.id !== itemID;
-    });
-    updateOrders(filteredOrdersList);
+    return fetch(`https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/orders/remove/${itemID}`, {
+      method: "PUT"
+    })
+    .then(resBuff => {
+      return resBuff.json();
+    })
+    .then(res => {
+      console.log(res)
+      if (res.completed) {
+        const filteredOrdersList = currentOrders.filter((item) => {
+          return item.id !== itemID;
+        });
+        updateOrders(filteredOrdersList);
+      } else {
+        console.log("Error! Check BE logs");
+      }
+    })
+    .catch(err => console.log({Error: err}));
   };
 
   const handleMarkCompletedItem = (itemID) => {
-    console.log("complete", itemID);
     const currentOrders = orders;
-
     return fetch(`https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/orders/complete/${itemID}`, {
       method: 'PUT'
     })
@@ -106,7 +117,6 @@ const Dashboard = ({username, logout})=>{
       .catch(err => console.log({Error: err}))
 
   };
-
 
   const handleAmendItem = () => {
     updateAmending(!amending);
