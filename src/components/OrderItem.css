@@ -30,3 +30,20 @@
   transform: translate(-300px);
   z-index: -2;
 }
+
+.order-ID {
+  font-size: 0.6rem;
+}
+
+.notes {
+  min-height: 70px;
+  width: 80%;
+  margin: 0 auto;  
+  background: rgba(255, 255, 255, 0.178);
+}
+
+.notes-text {
+  text-align: left;
+  display: block;
+  padding: 10px;
+}

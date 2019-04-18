@@ -22,16 +22,26 @@ const OrderItem = ({
         handleRemoveItem(id);
       }, 800)
     };
+    const totalCost = order.totalCost ? order.totalCost : order.order.reduce((acc, curr)=>{
+      return (acc + (curr.price * curr.quantity)).toFixed(2);
+    }, 0)
+    console.log(order.notes)
 
   return (
     <div className="Order-Item-Parent" key={order.id} id={order.id}>
-      <h4>Name: {order.name}</h4>
+      <h4>Customer: {order.name}</h4>
       <p>{dateDifference(order.date)}</p>
-      <p>{order.totalCost}</p>
-      <p>Quantity: {order.quantity}</p>
-      <p>Completed: {order.complete ? 'true' : 'false' }</p>
+      <p className="order-ID">ID: {order.id}</p>
+      <p>£{totalCost}</p>
+      <p>{order.quantity}</p>
+      <p>Completed: {order.complete ? 'YES' : 'NO' }</p>
       <p>Completed Date: {order.complete ? <span>{formatDate(order.completedDate)}</span> : <span>n/a</span>}</p>
-      
+      <p className="notes">Notes: 
+        {order.notes !== "''" && 
+          <span className="notes-text">{order.notes}</span>
+        }
+      </p>
+      <p>{order.paid}</p>
       <OrdersList orderList={order.order} />
 
       <button onClick={(e)=>{
