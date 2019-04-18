@@ -20,7 +20,7 @@ const OrderItem = ({
       console.log(box)
       setTimeout(()=>{
         handleRemoveItem(id);
-      }, 750)
+      }, 800)
     };
 
   return (

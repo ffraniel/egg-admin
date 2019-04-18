@@ -5,7 +5,7 @@
   border-radius: 5px;
   outline: none;
   opacity: 1;
-  transition: outline 0.15s, opacity 0.5s;
+  transition: outline 0.15s, opacity 0.75s, transform 0.75s;
 }
 
 .Order-Item-Parent:hover {
@@ -34,4 +34,6 @@
 
 .fade {
   opacity: 0;
+  transform: translate(-300px);
+  z-index: -2;
 }
