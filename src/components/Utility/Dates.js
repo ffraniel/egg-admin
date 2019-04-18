@@ -1,4 +1,4 @@
-import { format, differenceInDays, differenceInHours, differenceInSeconds } from 'date-fns';
+import { format, differenceInDays, differenceInHours, differenceInMinutes } from 'date-fns';
 
 export const dateDifference = (date) => {
   let difference = differenceInDays(date, new Date());
@@ -10,8 +10,8 @@ export const dateDifference = (date) => {
     if (differenceHours < -1) {
       return `Made ${differenceHours} hours ago`;
     } else {
-      let differenceSeconds = Math.abs(differenceInSeconds(date, new Date())).toString();
-      return `Made ${differenceSeconds} seconds ago`;
+      let differenceSeconds = Math.abs(differenceInMinutes(date, new Date())).toString();
+      return `Made ${differenceSeconds} minutes ago`;
     }
   }
 };
