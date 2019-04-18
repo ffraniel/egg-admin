@@ -15,17 +15,26 @@
 
 }
 
+.check-button {
+  margin: 10px;
+}
+
 .Available-Green {
   background: green;
   color: white;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .Available-Red {
   background: red;
   color: white;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .disable-button  {
   background: rgb(73, 73, 73);
   color: black;
+  margin: 10px;
 }

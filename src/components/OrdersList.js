@@ -26,7 +26,7 @@ const OrdersList = ({ orderList }) => {
           <p className="Product-Eggs">Order requires {orderItem.number || 'n/a'} eggs</p>
           {orderItem.number && 
             <>
-              <button onClick={() => {checkOrderPossible(orderItem.number)}}>Check Availability</button>
+              <button className="check-button" onClick={() => {checkOrderPossible(orderItem.number)}}>Check Availability</button>
               {eggsAvailable && 
                 <div className="Eggs-Available">
                   {eggsAvailable >= orderItem.number && 
