@@ -80,17 +80,31 @@ const Dashboard = ({username, logout})=>{
   const handleMarkCompletedItem = (itemID) => {
     console.log("complete", itemID);
     const currentOrders = orders;
-    //  fire api call 
-    // also get completed date here
-    const ordersWithCompleted = currentOrders.map((item)=>{
-      if (item.id === itemID) {
-        item.complete = !item.complete;
-        return item;
-      } else {
-        return item;
-      };
-    });
-    updateOrders(ordersWithCompleted);
+
+    return fetch(`https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/orders/complete/${itemID}`, {
+      method: 'PUT'
+    })
+      .then(resBuffer => {
+        return resBuffer.json()})
+      .then(res => {
+        const ordersWithCompleted = currentOrders.map((item) => {
+          if (item.id === itemID) {
+            item.complete = res.completed;
+
+            if (item.complete) {
+              item.completedDate = res.completedDate;
+            } else if (!item.complete) {
+              item.completedDate = null;
+            }
+            return item;
+          } else {
+            return item;
+          };
+        });
+        updateOrders(ordersWithCompleted);
+      })
+      .catch(err => console.log({Error: err}))
+
   };
 
 
