@@ -2,6 +2,7 @@ import React from 'react';
 import './OrderItem.css';
 import OrdersList from './OrdersList';
 import AmendItem from './AmendItem';
+import {formatDate, dateDifference} from './Utility/Dates';
 
 const OrderItem = ({
     order,
@@ -25,11 +26,11 @@ const OrderItem = ({
   return (
     <div className="Order-Item-Parent" key={order.id} id={order.id}>
       <h4>Name: {order.name}</h4>
-      <p>Received {order.date}</p>
+      <p>{dateDifference(order.date)}</p>
       <p>{order.totalCost}</p>
       <p>Quantity: {order.quantity}</p>
       <p>Completed: {order.complete ? 'true' : 'false' }</p>
-      <p>Completed Date: {order.complete ? <span>{order.completedDate}</span> : <span>n/a</span>}</p>
+      <p>Completed Date: {order.complete ? <span>{formatDate(order.completedDate)}</span> : <span>n/a</span>}</p>
       
       <OrdersList orderList={order.order} />
 
