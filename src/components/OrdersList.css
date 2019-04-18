@@ -1,0 +1,31 @@
+.OrderList {
+  
+}
+
+.Product {
+  border-radius: 4px;
+  background: rgba(245, 245, 240, 0.466);
+  font-size: 0.8rem;
+  padding: 20px;
+  margin-bottom: 20px;
+
+}
+
+.Product-Name {
+
+}
+
+.Available-Green {
+  background: green;
+  color: white;
+}
+
+.Available-Red {
+  background: red;
+  color: white;
+}
+
+.disable-button  {
+  background: rgb(73, 73, 73);
+  color: black;
+}

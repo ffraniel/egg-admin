@@ -24,8 +24,7 @@ const OrderItem = ({
     };
     const totalCost = order.totalCost ? order.totalCost : order.order.reduce((acc, curr)=>{
       return (acc + (curr.price * curr.quantity)).toFixed(2);
-    }, 0)
-    console.log(order.notes)
+    }, 0);
 
   return (
     <div className="Order-Item-Parent" key={order.id} id={order.id}>
