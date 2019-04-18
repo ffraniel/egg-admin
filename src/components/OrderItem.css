@@ -47,3 +47,10 @@
   display: block;
   padding: 10px;
 }
+
+.Completed {
+  background: rgb(150, 14, 21);
+}
+.Completed:hover {
+  background: rgb(163, 37, 43);
+}
