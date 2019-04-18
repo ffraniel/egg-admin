@@ -62,7 +62,6 @@ const Dashboard = ({username, logout})=>{
     return fetch(`https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/orders`)
     .then(res => res.json())
     .then(res => {
-      // console.log("fetch orders:: ", res)
       updateOrders(res);
     })
     .catch(err => console.log({error: err}));

@@ -6,18 +6,11 @@
   outline: none;
   opacity: 1;
   transition: outline 0.15s, opacity 0.75s, transform 0.75s;
+  background-color: #e4806f;
 }
 
 .Order-Item-Parent:hover {
   outline: blue solid 3px;
-  background-color: tomato;
-}
-
-.Order-Item-Parent:nth-child(odd) {
-  background-color: #e4806f;
-}
-
-.Order-Item-Parent:nth-child(even) {
   background-color: #eb6b55;
 }
 

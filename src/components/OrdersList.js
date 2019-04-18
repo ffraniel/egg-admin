@@ -2,8 +2,7 @@ import React from "react";
 import "./OrdersList.css";
 
 const OrdersList = ({ orderList }) => {
-  console.log("is an array", Array.isArray(orderList));
-  console.log(orderList)
+
   return (
     <section className="Order-List">
       {orderList.map((orderItem, i) => (

@@ -12,6 +12,7 @@ const OrdersSection = ({
     amendedValue,
     handleAmendValueChange
   }) => {
+
   return (
     <section className="Orders">
       <h3>Orders upcoming</h3>
@@ -27,6 +28,7 @@ const OrdersSection = ({
               handleSubmitAmend={handleSubmitAmend}
               amendedValue={amendedValue}
               handleAmendValueChange={handleAmendValueChange}
+              key={order.id}
             />
           );
           })

@@ -17,7 +17,6 @@ const OrderItem = ({
     const removeItemProcess = (id) => {
       let box = document.getElementById(id);
       box.classList.add('fade');
-      console.log(box)
       setTimeout(()=>{
         handleRemoveItem(id);
       }, 800)
