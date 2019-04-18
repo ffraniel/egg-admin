@@ -1,5 +1,9 @@
 .Dashboard-Egg-Display {
-  margin: 70px 0;
-  background: yellow;
+  padding-top: 75px;
+  background: rgb(140, 184, 148);
+  text-align: center;
 }
 
+.Button-Container {
+  padding: 20px 0;
+}

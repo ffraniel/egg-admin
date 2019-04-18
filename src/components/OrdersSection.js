@@ -15,21 +15,23 @@ const OrdersSection = ({
   return (
     <section className="Orders">
       <h3>Orders upcoming</h3>
-      {orders.map((order) => {
-        return (
-          <OrderItem 
-            order={order}
-            handleRemoveItem={handleRemoveItem}
-            handleMarkCompletedItem={handleMarkCompletedItem}
-            handleAmendItem={handleAmendItem}
-            amending={amending}
-            handleSubmitAmend={handleSubmitAmend}
-            amendedValue={amendedValue}
-            handleAmendValueChange={handleAmendValueChange}
-          />
-        );
-        })
-      }
+      <div className="Orders-List-Container">
+        {orders.map((order) => {
+          return (
+            <OrderItem 
+              order={order}
+              handleRemoveItem={handleRemoveItem}
+              handleMarkCompletedItem={handleMarkCompletedItem}
+              handleAmendItem={handleAmendItem}
+              amending={amending}
+              handleSubmitAmend={handleSubmitAmend}
+              amendedValue={amendedValue}
+              handleAmendValueChange={handleAmendValueChange}
+            />
+          );
+          })
+        } 
+      </div>
     </section>
   );
 }

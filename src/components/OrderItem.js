@@ -14,9 +14,18 @@ const OrderItem = ({
     handleAmendValueChange
   }) => {
 
+    const removeItemProcess = (id) => {
+      let box = document.getElementById(id);
+      box.classList.add('fade');
+      console.log(box)
+      setTimeout(()=>{
+        handleRemoveItem(id);
+      }, 750)
+    };
+
   return (
-    <div className="Order-Item" key={order.id}>
-      <h4>{order.name}</h4>
+    <div className="Order-Item-Parent" key={order.id} id={order.id}>
+      <h4>Name: {order.name}</h4>
       <p>Received {order.date}</p>
       <p>{order.totalCost}</p>
       <p>Quantity: {order.quantity}</p>
@@ -27,7 +36,8 @@ const OrderItem = ({
 
       <button onClick={(e)=>{
         e.preventDefault();
-        handleRemoveItem(order.id);
+        removeItemProcess(order.id);
+        
         }}>Remove</button>
 
       <button onClick={()=>{
@@ -39,7 +49,11 @@ const OrderItem = ({
         }}>Amend</button>
 
       {amending && 
-        <AmendItem />
+        <AmendItem 
+          handleSubmitAmend={handleSubmitAmend}
+          amendedValue={amendedValue}
+          handleAmendValueChange={handleAmendValueChange}
+        />
       }
   </div>
   )}

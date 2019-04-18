@@ -1,0 +1,15 @@
+.Orders {
+  background: rgba(140, 184, 148, 0.822);
+  padding: 25px;
+}
+
+.Orders h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.Orders-List-Container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
